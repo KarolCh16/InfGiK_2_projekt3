@@ -1,0 +1,59 @@
+Form:
+<Form>:
+	search_lat: coor_lat
+	search_long: coor_long
+	my_map: map
+	my_image: image
+	my_button_next: NEXT
+	my_button_check: sprawdz
+	my_score: score
+	orientation: "vertical"
+	BoxLayout:
+		orientation: "horizontal"
+		MapView:
+			size_hint_x: 50
+			lat: 0
+			long: 0 
+			zoom: 3
+			id: map
+			on_map_relocated: root.draw_marker()
+		Image:
+			size_hint_x: 50
+			source: 'welcome.jpg'
+			id: image
+	BoxLayout:
+		height: "40dp"
+		size_hint_y: None
+		Label:
+			size_hint_x: 30
+			text: "Lat"
+		Label:
+			size_hint_x: 30
+			id: coor_lat
+		Label:
+			size_hint_x: 30
+			text: "Long"
+		Label:
+			size_hint_x: 30
+			id: coor_long
+	BoxLayout:
+		height: "40dp"
+		size_hint_y: None
+		Label:
+			size_hint_x: 30
+			text: "Score"
+		Label:
+			size_hint_x: 30
+			id: score
+			text: '0'
+		Button:
+			size_hint_x: 30
+			text: "CHECK"
+			id: sprawdz
+			disabled: True
+			on_press: root.check_points()
+		Button:
+			size_hint_x: 30
+			id: NEXT
+			text: "START"
+			on_press: root.next_img()
